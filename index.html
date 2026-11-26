@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Atelier Gracja — suknie ślubne</title>
+  <meta name="description" content="Atelier Gracja — kolekcja sukien ślubnych, dla druhen i wieczorowych. Wersja demonstracyjna.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <div class="announce">
+    <span>Darmowa dostawa od 2 000 zł</span>
+    <span class="dot">·</span>
+    <span>Szycie na wymiar bez dopłaty</span>
+    <span class="dot">·</span>
+    <span class="demo-tag">Wersja demonstracyjna</span>
+  </div>
+
+  <header class="header" id="header">
+    <div class="header-inner">
+      <button class="icon-btn menu-btn" id="menuBtn" aria-label="Menu" aria-expanded="false">
+        <svg viewBox="0 0 24 24"><path d="M3 7h18M3 12h18M3 17h18"/></svg>
+      </button>
+
+      <a class="logo" href="#top">Atelier <em>Gracja</em></a>
+
+      <nav class="nav" id="nav">
+        <a href="#kolekcja" data-cat="all">Wszystkie</a>
+        <a href="#kolekcja" data-cat="wedding">Suknie ślubne</a>
+        <a href="#kolekcja" data-cat="bridesmaid">Dla druhen</a>
+        <a href="#kolekcja" data-cat="evening">Wieczorowe</a>
+        <a href="#przymiarka">Przymiarka</a>
+      </nav>
+
+      <div class="header-actions">
+        <label class="search">
+          <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5"/><path d="m20 20-4.2-4.2"/></svg>
+          <input id="search" type="search" placeholder="Szukaj sukni…" autocomplete="off">
+        </label>
+        <button class="icon-btn" id="favBtn" aria-label="Ulubione">
+          <svg viewBox="0 0 24 24"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"/></svg>
+          <span class="count" id="favCount" hidden></span>
+        </button>
+        <button class="icon-btn" id="cartBtn" aria-label="Koszyk">
+          <svg viewBox="0 0 24 24"><path d="M5 8h14l-1.2 12H6.2L5 8z"/><path d="M9 8V6.5a3 3 0 0 1 6 0V8"/></svg>
+          <span class="count" id="cartCount" hidden></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="hero-text">
+        <p class="eyebrow">Kolekcja 2027</p>
+        <h1>Suknie szyte<br><em>z gracją</em></h1>
+        <p class="lead">Koronki, tiule i jedwab dobrane z myślą o Twoim dniu. Każdą suknię szyjemy na zamówienie — w Twoim rozmiarze lub dokładnie na wymiar.</p>
+        <div class="hero-cta">
+          <a class="btn" href="#kolekcja" data-cat="wedding">Zobacz suknie ślubne</a>
+          <a class="btn btn-ghost" href="#przymiarka">Umów przymiarkę</a>
+        </div>
+      </div>
+      <div class="hero-art" id="heroArt" aria-hidden="true"></div>
+    </section>
+
+    <section class="perks">
+      <div class="perk"><span class="perk-ico">✂</span><div><strong>Szyte na wymiar</strong><p>Bez dopłaty do każdej sukni</p></div></div>
+      <div class="perk"><span class="perk-ico">❦</span><div><strong>Próbki tkanin</strong><p>Dotknij koronki przed zakupem</p></div></div>
+      <div class="perk"><span class="perk-ico">✈</span><div><strong>Darmowa dostawa</strong><p>Przy zamówieniu od 2 000 zł</p></div></div>
+      <div class="perk"><span class="perk-ico">♡</span><div><strong>Przymiarka w atelier</strong><p>Kawa, szampan i spokój</p></div></div>
+    </section>
+
+    <section class="shop" id="kolekcja">
+      <div class="shop-head">
+        <div>
+          <p class="eyebrow" id="shopEyebrow">Kolekcja</p>
+          <h2 id="shopTitle">Wszystkie suknie</h2>
+        </div>
+        <div class="shop-tools">
+          <button class="btn-filter" id="filterBtn">
+            <svg viewBox="0 0 24 24"><path d="M4 6h16M7 12h10M10 18h4"/></svg>
+            Filtry <span id="filterBadge"></span>
+          </button>
+          <span class="result-count" id="resultCount"></span>
+          <label class="sort">
+            <span>Sortuj:</span>
+            <select id="sort">
+              <option value="featured">Polecane</option>
+              <option value="new">Nowości</option>
+              <option value="price-asc">Cena: od najniższej</option>
+              <option value="price-desc">Cena: od najwyższej</option>
+              <option value="rating">Najlepiej oceniane</option>
+            </select>
+          </label>
+        </div>
+      </div>
+
+      <div class="active-filters" id="activeFilters"></div>
+
+      <div class="shop-body">
+        <aside class="filters" id="filters" aria-label="Filtry">
+          <div class="filters-head">
+            <h3>Filtry</h3>
+            <button class="icon-btn" id="filtersClose" aria-label="Zamknij filtry">
+              <svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg>
+            </button>
+          </div>
+          <div id="filterGroups"></div>
+          <div class="filters-foot">
+            <button class="btn btn-ghost" id="filtersClear">Wyczyść</button>
+            <button class="btn" id="filtersApply">Pokaż wyniki</button>
+          </div>
+        </aside>
+
+        <div class="grid" id="grid"></div>
+      </div>
+    </section>
+
+    <section class="appointment" id="przymiarka">
+      <div class="appointment-inner">
+        <p class="eyebrow">Atelier</p>
+        <h2>Przymierz swoją suknię <em>u nas</em></h2>
+        <p>Zarezerwuj 90 minut tylko dla siebie i swoich bliskich. Pomożemy dobrać sylwetkę, dekolt i odcień, a krawcowa od razu weźmie miarę.</p>
+        <button class="btn btn-light" id="bookBtn">Zarezerwuj termin</button>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div>
+        <a class="logo" href="#top">Atelier <em>Gracja</em></a>
+        <p class="muted">Suknie ślubne szyte z gracją.<br>Projekt demonstracyjny — bez sklepu i płatności.</p>
+      </div>
+      <div>
+        <h4>Kolekcja</h4>
+        <a href="#kolekcja" data-cat="wedding">Suknie ślubne</a>
+        <a href="#kolekcja" data-cat="bridesmaid">Dla druhen</a>
+        <a href="#kolekcja" data-cat="evening">Wieczorowe</a>
+      </div>
+      <div>
+        <h4>Pomoc</h4>
+        <a href="#przymiarka">Przymiarka</a>
+        <a href="#kolekcja">Tabela rozmiarów</a>
+        <a href="#kolekcja">Dostawa i zwroty</a>
+      </div>
+      <div>
+        <h4>Kontakt</h4>
+        <p class="muted">ul. Kwiatowa 12, Warszawa<br>pon.–sob. 10:00–19:00</p>
+      </div>
+    </div>
+    <p class="copyright">© 2026 Atelier Gracja · proof of concept</p>
+  </footer>
+
+  <div class="overlay" id="overlay"></div>
+
+  <aside class="drawer" id="cartDrawer" aria-label="Koszyk" aria-hidden="true">
+    <div class="drawer-head">
+      <h3>Koszyk <span id="cartTitleCount"></span></h3>
+      <button class="icon-btn" data-close aria-label="Zamknij koszyk">
+        <svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg>
+      </button>
+    </div>
+    <div class="drawer-body" id="cartBody"></div>
+    <div class="drawer-foot" id="cartFoot"></div>
+  </aside>
+
+  <div class="modal" id="modal" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="modal-box" id="modalBox"></div>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="js/products.js"></script>
+  <script src="js/dress-art.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
